@@ -1,4 +1,4 @@
-days since 1-1-0000,YYYYMMDD,team1 index (zero if a non-conference team),homefield1 (1=home, -1=away, 0=neutral),score1,team2 index (zero if a non-conference team),homefield2 (1=home, -1=away, 0=neutral),score2
+days since 1-1-0000,YYYYMMDD,team1 index,homefield1,score1,team2 index,homefield2,score2
 736573,20160901,    29,  1,  30,    41, -1,  23
 736573,20160901,    46, -1,  13,    57,  1,  10
 736574,20160902,    47,  1,  26,    21, -1,  13
