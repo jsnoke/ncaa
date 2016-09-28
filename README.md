@@ -2,7 +2,7 @@
 
 Visualization 09.27.2016
 
-![Teams Visualization](https://github.com/jsnoke/ncaa/raw/master/visual_09.27.16.pdf)
+![Teams Network Visual](visual_09.27.16.pdf)
 
 Ranking: 09.27.2016
 
