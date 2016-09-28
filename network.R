@@ -51,7 +51,7 @@ View(rankDF)
 overallRank = data.frame(cbind(c(1:64), row.names(rankDF[order(rankDF$overallRank, decreasing = T),]), 
                                sort(rankDF$overallRank, decreasing = T)))
 colnames(overallRank) = c("Rank", "Team", "Coefficient")
-write.csv(overallRank, file = "overallRank.csv", quote = F)
+write.csv(overallRank, file = "overallRank.csv", quote = F, row.names = F)
 
 ## plot
 plotLayout = layout_with_fr(ncaaNet, dim = 2, weights = E(ncaaNet)$scoreDiff)
