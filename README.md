@@ -2,7 +2,7 @@
 
 Visualization 09.27.2016
 
-[Teams Visualization](visual_09.27.16.pdf)
+[Teams Visualization](visual_09.27.16.pdf?raw=true)
 
 Ranking: 09.27.2016
 
