@@ -2,9 +2,10 @@
 
 Visualization 09.27.2016
 
-![wiki-Vote Visualization](visuals/wikiPlot.pdf)
+![Teams Visualization](visual_09.27.16.pdf)
 
 Ranking: 09.27.2016
+
 | Rank | Team            | Coefficient      | 
 |------|-----------------|------------------| 
 | 1    |  Texas_A&M      | 44.1028893415771 | 
