@@ -1,10 +1,10 @@
-# ncaa
+# A Newtork Approach to NCAA Football Rankings
 
-Visualization 09.28.2016
+*Visualization 09.28.2016*
 
 ![Teams Network Visual](visual_09.28.16.pdf)
 
-Ranking: 09.28.2016
+*Ranking: 09.28.2016*
 
 | Rank | Team            | Coefficient      | 
 |------|-----------------|------------------| 
@@ -137,3 +137,18 @@ Ranking: 09.28.2016
 | 127  |  Charlotte      | 3.66449606262347 | 
 | 128  |  Rice           | 3.26803451953925 | 
 
+*Methods*
+
+*Alpha Centrality*
+Inverse measure
+
+*PageRank*
+Inverse measure
+
+*Power Centrality*
+C_BP(alpha,beta)=alpha (I-beta A)^-1 A 1
+
+*Closeness Rank In/Out*
+The closeness centrality of a vertex is defined by the inverse of the average length of the shortest paths to/from all the other vertices in the graph:
+
+1/sum( d(v,i), i != v)
