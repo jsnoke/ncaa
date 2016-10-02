@@ -2,7 +2,7 @@ library(igraph)
 library(RColorBrewer)
 
 ncaaFootball = read.csv("~/Documents/ncaa_meanderings/ncaaFootballAll.csv")
-teamInd = read.csv("~/Documents/ncaa_meanderings/teamIndAll.csv")
+teamInd = read.csv("~/Documents/ncaa_meanderings/teamIndAllv2.csv")
 
 ncaaFootball$scoreDiff = ncaaFootball$score1 - ncaaFootball$score2
 networkDF = ncaaFootball[, c(3, 6, 4, 9)]
@@ -13,12 +13,7 @@ V(ncaaNet)$name = V(ncaaNet)$team
 
 #V(ncaaNet)$color = as.numeric(teamInd$conference)
 
-#generate a cool palette for the graph (darker colors = older nodes)
-YlOrBr.pal = colorRampPalette(brewer.pal(10,"YlOrRd"))
-#colors for the nodes are chosen from the very beginning
-V(ncaaNet)$color = rev(YlOrBr.pal(vcount(ncaaNet)))[as.numeric(teamInd$conference)]
-V(ncaaNet)$color = c("#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", 
-                     "#e31a1c", "#fdbf6f", "#ff7f00", "#cab2d6", "#6a3d9a", "#ffff99")[as.numeric(teamInd$conference)]
+V(ncaaNet)$color = c("#e41a1c", "#377eb8", "#4daf4a", "#984ea3", "#ff7f00", "#ffff33", "#a65628")[as.numeric(teamInd$conference)]
 #E(ncaaNet)$scoreDiff
 #V(ncaaNet)
 #ncaaNet$scoreDiff
@@ -58,7 +53,7 @@ rankDF = data.frame(scale(rankDF))
 ## reduce to two dimensions
 library(FactoMineR)
 
-redInfluence = PCA(rankDF)
+redInfluence = PCA(rankDF, ncp = 2)
 summary(redInfluence$ind$coord)
 
 ##
@@ -73,10 +68,10 @@ View(rankDF)
 overallRank = data.frame(cbind(c(1:128), row.names(rankDF[order(rankDF$overallRankDR, decreasing = T),]), 
                                 sort(rankDF$overallRankDR, decreasing = T)))
 colnames(overallRank) = c("Rank", "Team", "Coefficient")
-write.csv(overallRank, file = "overallRank_09.28.16.csv", quote = F, row.names = F)
+write.csv(overallRank, file = "overallRank_10.02.16.csv", quote = F, row.names = F)
 
 ## plot
-plotLayout = layout_with_fr(ncaaNet, dim = 2, weights = E(ncaaNet)$scoreDiff)
+plotLayout = layout_with_fr(ncaaNet, dim = 2, weights = E(ncaaNet)$scoreDiff, start.temp =  = vcount(ncaaNet))
 plotLayout = layout_nicely(ncaaNet, dim = 2, weights = E(ncaaNet)$scoreDiff)
 
 plot(ncaaNet, layout = plotLayout, edge.arrow.size = 0.025, rescale = F,
