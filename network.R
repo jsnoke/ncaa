@@ -66,12 +66,13 @@ View(rankDF)
 #overallRank = data.frame(cbind(c(1:128), row.names(rankDF[order(rankDF$overallRank, decreasing = T),]), 
 #                               sort(rankDF$overallRank, decreasing = T)))
 overallRank = data.frame(cbind(c(1:128), row.names(rankDF[order(rankDF$overallRankDR, decreasing = T),]), 
-                                sort(rankDF$overallRankDR, decreasing = T)))
-colnames(overallRank) = c("Rank", "Team", "Coefficient")
+                                sort(rankDF$overallRankDR, decreasing = T), 
+                               V(ncaaNet)$conference[order(rankDF$overallRankDR, decreasing = T)]))
+colnames(overallRank) = c("Rank", "Team", "Coefficient", "Conference")
 write.csv(overallRank, file = "overallRank_10.02.16.csv", quote = F, row.names = F)
 
 ## plot
-plotLayout = layout_with_fr(ncaaNet, dim = 2, weights = E(ncaaNet)$scoreDiff, start.temp =  = vcount(ncaaNet))
+plotLayout = layout_with_fr(ncaaNet, dim = 2, weights = E(ncaaNet)$scoreDiff, start.temp = vcount(ncaaNet)^(1/2))
 plotLayout = layout_nicely(ncaaNet, dim = 2, weights = E(ncaaNet)$scoreDiff)
 
 plot(ncaaNet, layout = plotLayout, edge.arrow.size = 0.025, rescale = F,
