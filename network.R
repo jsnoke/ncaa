@@ -55,25 +55,33 @@ library(FactoMineR)
 
 redInfluence = PCA(rankDF, ncp = 2)
 summary(redInfluence$ind$coord)
+summary(redInfluence)
+
+redInfluence2 = PCA(rankDF[, c(2,4:5)], ncp = 2)
+summary(redInfluence2$ind$coord)
+summary(redInfluence2)
 
 ##
 rankDF$overallRank = (rankDF$closenessRankOut - rankDF$alphaInfluence) * 5 + 25
 View(rankDF)
 
-rankDF$overallRankDR = (redInfluence$ind$coord[,2] - redInfluence$ind$coord[,1]) * 5 + 20
+rankDF$overallRankDR = (redInfluence$ind$coord[,2] - redInfluence$ind$coord[,1]) * 5 + 25
+View(rankDF)
+
+rankDF$overallRankDR2 = (-redInfluence2$ind$coord[,1]) * 5 + 20
 View(rankDF)
 
 #overallRank = data.frame(cbind(c(1:128), row.names(rankDF[order(rankDF$overallRank, decreasing = T),]), 
 #                               sort(rankDF$overallRank, decreasing = T)))
-overallRank = data.frame(cbind(c(1:128), row.names(rankDF[order(rankDF$overallRankDR, decreasing = T),]), 
-                                sort(rankDF$overallRankDR, decreasing = T), 
-                               V(ncaaNet)$conference[order(rankDF$overallRankDR, decreasing = T)]))
+overallRank = data.frame(cbind(c(1:128), row.names(rankDF[order(rankDF$overallRankDR2, decreasing = T),]), 
+                                sort(rankDF$overallRankDR2, decreasing = T), 
+                               V(ncaaNet)$conference[order(rankDF$overallRankDR2, decreasing = T)]))
 colnames(overallRank) = c("Rank", "Team", "Coefficient", "Conference")
-write.csv(overallRank, file = "overallRank_10.02.16.csv", quote = F, row.names = F)
+write.csv(overallRank, file = "overallRank_10.09.16.csv", quote = F, row.names = F)
 
 ## plot
 plotLayout = layout_with_fr(ncaaNet, dim = 2, weights = E(ncaaNet)$scoreDiff, start.temp = vcount(ncaaNet)^(1/2))
-plotLayout = layout_nicely(ncaaNet, dim = 2, weights = E(ncaaNet)$scoreDiff)
+#plotLayout = layout_nicely(ncaaNet, dim = 2, weights = E(ncaaNet)$scoreDiff)
 
 plot(ncaaNet, layout = plotLayout, edge.arrow.size = 0.025, rescale = F,
      xlim = range(plotLayout[, 1]), ylim = range(plotLayout[, 2]), vertex.label.dist = 1, 
