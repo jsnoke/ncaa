@@ -68,7 +68,7 @@ View(rankDF)
 rankDF$overallRankDR = (redInfluence$ind$coord[,2] - redInfluence$ind$coord[,1]) * 5 + 25
 View(rankDF)
 
-rankDF$overallRankDR2 = (-redInfluence2$ind$coord[,1]) * 5 + 20
+rankDF$overallRankDR2 = (-redInfluence2$ind$coord[,1]) * 5 + 30
 View(rankDF)
 
 #overallRank = data.frame(cbind(c(1:128), row.names(rankDF[order(rankDF$overallRank, decreasing = T),]), 
@@ -77,7 +77,7 @@ overallRank = data.frame(cbind(c(1:128), row.names(rankDF[order(rankDF$overallRa
                                 sort(rankDF$overallRankDR2, decreasing = T), 
                                V(ncaaNet)$conference[order(rankDF$overallRankDR2, decreasing = T)]))
 colnames(overallRank) = c("Rank", "Team", "Coefficient", "Conference")
-write.csv(overallRank, file = "overallRank_10.09.16.csv", quote = F, row.names = F)
+write.csv(overallRank, file = "overallRank_10.16.16.csv", quote = F, row.names = F)
 
 ## plot
 plotLayout = layout_with_fr(ncaaNet, dim = 2, weights = E(ncaaNet)$scoreDiff, start.temp = vcount(ncaaNet)^(1/2))
@@ -86,7 +86,7 @@ plotLayout = layout_with_fr(ncaaNet, dim = 2, weights = E(ncaaNet)$scoreDiff, st
 plot(ncaaNet, layout = plotLayout, edge.arrow.size = 0.025, rescale = F,
      xlim = range(plotLayout[, 1]), ylim = range(plotLayout[, 2]), vertex.label.dist = 1, 
      vertex.label.color = "blue", vertex.label.cex = 0.5, 
-     vertex.size = ( rankDF$overallRankDR ))
+     vertex.size = ( rankDF$overallRankDR2 ))
 
 
 
