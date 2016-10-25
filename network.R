@@ -77,7 +77,7 @@ overallRank = data.frame(cbind(c(1:128), row.names(rankDF[order(rankDF$overallRa
                                 sort(rankDF$overallRankDR2, decreasing = T), 
                                V(ncaaNet)$conference[order(rankDF$overallRankDR2, decreasing = T)]))
 colnames(overallRank) = c("Rank", "Team", "Coefficient", "Conference")
-write.csv(overallRank, file = "overallRank_10.16.16.csv", quote = F, row.names = F)
+write.csv(overallRank, file = "overallRank_10.23.16.csv", quote = F, row.names = F)
 
 ## plot
 plotLayout = layout_with_fr(ncaaNet, dim = 2, weights = E(ncaaNet)$scoreDiff, start.temp = vcount(ncaaNet)^(1/2))
